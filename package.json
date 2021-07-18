@@ -1,0 +1,30 @@
+{
+  "name": "countriesapiapp",
+  "version": "1.0.0",
+  "description": "Project made just for practice, idea by FrontEndMentor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TonyHermann/CountriesApiApp.git"
+  },
+  "keywords": [
+    "Countries",
+    "Api",
+    "Aplication",
+    "JS",
+    "Css",
+    "Sass"
+  ],
+  "author": "Tony Hermann",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TonyHermann/CountriesApiApp/issues"
+  },
+  "homepage": "https://github.com/TonyHermann/CountriesApiApp#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}
