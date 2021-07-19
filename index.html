@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Where in the world</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Where in the world?</h1>
+            <div class="style-button-toggle">
+                <i class="fas fa-moon"></i><span>Dark Mode</span>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="options-bar">
+            <div class="searchbar">
+                <input type="search" placeholder="Search for a country">
+            </div>
+            <div class="filter-selector">
+                <select name="filter" id="filter">
+                    <option value="Start">Filter by region</option>
+                    <option value="Africa">Africa</option>
+                    <option value="America">America</option>
+                    <option value="Asia">Asia</option>
+                    <option value="Europe">Europe</option>
+                    <option value="Oceania">Oceania</option>
+                </select>
+            </div>
+        </div>
+        <div class="countries-container">
+            <div class="card">
+                <div class="card__image">
+                    <img src="#" alt="country">
+                </div>
+                <div class="card__content">
+                    <p class="text-center">
+                        Argentina
+                    </p>
+                    <p>Population: <span id="population-span">47.000.000</span></p>
+                    <p>Region: <span id="region-span">America</span></p>
+                    <p>Capital: <span id="capital-span">CABA</span></p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
