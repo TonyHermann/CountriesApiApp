@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./build/css/app.css">
     <title>Where in the world</title>
 </head>
 <body>
@@ -11,11 +12,11 @@
         <nav>
             <h1>Where in the world?</h1>
             <div class="style-button-toggle">
-                <i class="fas fa-moon"></i><span>Dark Mode</span>
+                <img src="./build/img/moon.png" alt="moon icon"><span>Dark Mode</span>
             </div>
         </nav>
     </header>
-    <main>
+    <main class="container">
         <div class="options-bar">
             <div class="searchbar">
                 <input type="search" placeholder="Search for a country">
@@ -34,18 +35,46 @@
         <div class="countries-container">
             <div class="card">
                 <div class="card__image">
-                    <img src="#" alt="country">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/1200px-Flag_of_Argentina.svg.png" alt="country">
                 </div>
                 <div class="card__content">
-                    <p class="text-center">
+                    <p class="card__content-title">
                         Argentina
                     </p>
-                    <p>Population: <span id="population-span">47.000.000</span></p>
-                    <p>Region: <span id="region-span">America</span></p>
-                    <p>Capital: <span id="capital-span">CABA</span></p>
+                    <p class="card__content-subtitle">Population: <span class="card__content-span" id="population-span">47.000.000</span></p>
+                    <p class="card__content-subtitle">Region: <span class="card__content-span" id="region-span">America</span></p>
+                    <p class="card__content-subtitle">Capital: <span class="card__content-span" id="capital-span">CABA</span></p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card__image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/1200px-Flag_of_Argentina.svg.png" alt="country">
+                </div>
+                <div class="card__content">
+                    <p class="card__content-title">
+                        Argentina
+                    </p>
+                    <p class="card__content-subtitle">Population: <span class="card__content-span" id="population-span">47.000.000</span></p>
+                    <p class="card__content-subtitle">Region: <span class="card__content-span" id="region-span">America</span></p>
+                    <p class="card__content-subtitle">Capital: <span class="card__content-span" id="capital-span">CABA</span></p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card__image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/1200px-Flag_of_Argentina.svg.png" alt="country">
+                </div>
+                <div class="card__content">
+                    <p class="card__content-title">
+                        Argentina
+                    </p>
+                    <p class="card__content-subtitle">Population: <span class="card__content-span" id="population-span">47.000.000</span></p>
+                    <p class="card__content-subtitle">Region: <span class="card__content-span" id="region-span">America</span></p>
+                    <p class="card__content-subtitle">Capital: <span class="card__content-span" id="capital-span">CABA</span></p>
                 </div>
             </div>
         </div>
+        <!-- <div>Icons made by <a href="https://www.flaticon.com/authors/good-ware" title="Good Ware">Good Ware</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
     </main>
+    <script src="./build/js/app.min.js"></script>
 </body>
 </html>
