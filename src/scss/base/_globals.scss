@@ -1,0 +1,129 @@
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+
+    &.day {
+        background-color: $very_light_gray;
+        color: black;
+    }
+
+    &.night {
+        background-color: $very_dark_blue_dmb;
+        color: $white;
+
+        .card {
+            background-color: $dark_blue;
+        }
+
+
+    }
+}
+
+body {
+    &.night {
+        header {
+            nav {
+                background-color: $dark_blue;
+            }
+        }
+
+    }
+
+}
+
+
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: $primary_font;
+    font-size: 1.6rem;
+
+    &.fix-body {
+        overflow: hidden;
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+}
+
+button {
+    border: none;
+}
+
+
+
+.container {
+    width: 95%;
+    max-width: 160rem;
+    margin: 0 auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.night {
+    .overlay {
+        background-color: $very_dark_blue_dmb;
+        .back_button {
+            .button {
+                background-color: $dark_blue;
+                color: $white;
+            }
+        }
+        .countryinfo {
+            .content {
+                .overlay__content-border {
+                    .overlay__content-border__countries span {
+                        background-color: $dark_blue;
+                    }
+                }
+            }
+        }
+    }
+    .options-bar {
+        .searchbar {
+            input {
+                background-color: $dark_blue;
+                &::placeholder{
+                    color: $white;
+                }
+            }
+        }
+        .filter-selector {
+            select {
+                background-color: $dark_blue;
+                color: $white;
+            }
+        }
+    }
+    header {
+        nav {
+            h1 {
+                color: $white;
+            }
+        }
+    }
+    p, h1, span {
+        color: $white;
+    }
+    .card {
+        background-color: $dark_blue;
+    }
+}

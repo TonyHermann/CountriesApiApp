@@ -1,0 +1,102 @@
+
+body {
+    &.position-absolute {
+        position: absolute;
+    }
+    z-index: 100000;
+    .overlay {
+        z-index: 100000;
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        background-color: $very_light_gray;
+        .back_button {
+            .button {
+                background-color: $white;
+                padding: 2rem;
+                padding-left: 5rem;
+                padding-right: 5rem;
+                box-shadow: 0px 3px 13px -6px rgba(0,0,0,0.47);
+                border-radius: 1rem;
+                cursor: pointer;
+                margin: 5rem;
+            }
+        }
+        .countryinfo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 10rem;
+            margin: 0 auto;
+            gap: 5rem;
+            .flag img {
+                margin: 0;
+                height: 30rem;
+            }
+            .content {
+                display: flex;
+                flex-direction: column;
+                .overlay__content-title {
+                    font-weight: $extra-bold;
+                    font-size: 3rem;
+                }
+                .overlay__content-data {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+                    p {
+                        font-weight: $semi-bold;
+                        margin: 1rem;
+                        span {
+                            font-weight: $light;
+                        }
+                    }
+                }
+                .overlay__content-border {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    .overlay__content-border__title p {
+                        font-weight: $semi-bold;
+                    }
+                    .overlay__content-border__countries span {
+                        font-weight: $light;
+                        padding: 1rem;
+                        background-color: $white;
+                        margin: 1rem;
+                        border-radius: 0.9rem;
+                        cursor: pointer;
+                        box-shadow: 0px 3px 13px -6px rgba(0,0,0,0.47);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// <div class="overlay">
+//             <div class="back_button">
+//                 <p>BACK</p>
+//             </div>
+//             <div class="countryinfo">
+//                 <div class="flag">
+//                     <img src="#" alt="flag">
+//                 </div>
+//                 <div class="content">
+//                     <p class="overlay__content-title">
+//                         Argentina
+//                     </p>
+//                     <p>
+//                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi eius quos odit officiis officia
+//                         veritatis laudantium! Molestiae eligendi mollitia unde, eveniet commodi distinctio ea veritatis
+//                         non necessitatibus enim eius ex?
+//                         Est possimus doloribus mollitia odio aliquam blanditiis quod a sit delectus porro! Laborum nemo
+//                         laudantium veritatis cupiditate distinctio, voluptates voluptatem temporibus natus facere qui
+//                         nam quam animi aspernatur a sequi?
+//                     </p>
+//                 </div>
+//             </div>
+            
+//         </div>
