@@ -2,7 +2,6 @@
 
 const main = document.querySelector('main');
 const main2 = document.getElementsByTagName('main');
-console.log(main2[0].children);
 const body = document.querySelector('.body');
 const body2 = document.getElementsByTagName('body');
 const html1 = document.querySelector('#html');
@@ -14,11 +13,7 @@ const dnButton = document.querySelector('.style-button-toggle');
 
 
 const showCountry = (itemone, itemtwo) => {
-    console.log("initializing showCountry()")
-    console.log('itemone');
-    console.log(itemone); 
-    console.log('itemtwo');
-    console.log(itemtwo);
+
 
 
     const overlay = document.createElement('div');
@@ -44,7 +39,7 @@ const showCountry = (itemone, itemtwo) => {
 
     const title = document.createElement('p');
     title.textContent = itemtwo.countryName;
-    console.log("NOMBREEEEEEE"+itemtwo.name);
+
     title.classList.add('overlay__content-title');
 
     const divData = document.createElement('div');
@@ -72,17 +67,17 @@ const showCountry = (itemone, itemtwo) => {
         const lala = itemone.languages
         lala.forEach(function(langu){
             const { lang } = languageList;
-            console.log(langu.name);
+    
             languageList.lang = [...lang, `${langu.name} `];
         });
 
-        console.log(languageList);
+      
 
 
 
         const languages = document.createElement('p');
         languages.innerHTML = `Languages: <span>${languageList.lang}</span>`;
-        console.log(itemone.languages);
+     
 
 
     divData.appendChild(nativeName);
@@ -109,7 +104,7 @@ const showCountry = (itemone, itemtwo) => {
 
     let borderCountries = itemone.borders;
     borderCountries.forEach(function(countrya){
-        console.log(countrya);
+
         const { country } = borderCountriesList;
         borderCountriesList.country = [...country, `<span>${countrya}</span>`];
     });
@@ -117,7 +112,7 @@ const showCountry = (itemone, itemtwo) => {
     const divBorderCountries = document.createElement('div');
     divBorderCountries.classList.add('overlay__content-border__countries');
     divBorderCountries.innerHTML = `${borderCountriesList.country}`;
-    console.log(itemone.borders);
+ 
 
     divBorder.appendChild(divBorderTitle);
     divBorder.appendChild(divBorderCountries);
@@ -182,16 +177,14 @@ const init = (data, type) => {
 
   
 
-    console.log(data.length);
+    
     const fatherDiv = document.querySelector('.countries-container');
 
     let id = 0;
-    console.log('DATADATADATADATADATADATADATADATADATADATADATADATADATADATADATADATA')
-    console.log(data);
+   
     data.forEach((country) => {
 
-        console.log(` data length ${data.length}`);
-        console.log(` fatherDiv Count ${fatherDiv.childElementCount} `);
+     
         if ( fatherDiv.childElementCount + 1 > data.length) {
             return
         }
@@ -248,7 +241,7 @@ const init = (data, type) => {
             spanRegion.textContent = country.regionA;
             spanCapital.textContent = country.capitalA;
         } else {
-            console.log('else');
+         
             img.src = flag;
             title.textContent = name;
             // console.log(populationA);
@@ -296,10 +289,7 @@ const init = (data, type) => {
                 borders: country.bordersA
                 
             }
-            console.log(itemoneE);
-            console.log(itemoneE);
-            console.log(itemoneE);
-            
+  
             selectCountry(div, itemoneE);
         } else if (type === 'load') {
             let itemoneE = {
@@ -323,6 +313,8 @@ const init = (data, type) => {
     
 }
 
+let dataLALA 
+
 const launchApp = () => {
     try {
         fetch('https://restcountries.eu/rest/v2/all')
@@ -333,6 +325,7 @@ const launchApp = () => {
         .then(function(data){
             init(data, 'load');
             getData(data);
+            dataLALA = data;
         })
         .catch(function(err){
             console.log(err);
@@ -341,6 +334,8 @@ const launchApp = () => {
         console.log(error) 
     }
 }
+
+
 
 // https://restcountries.eu/rest/v2/all
 const dnButtonF = () => {
@@ -359,7 +354,7 @@ const dnButtonF = () => {
                 // elements[i].style ...
                 html2[i].classList.remove('night');
             }
-            console.log(body2);
+           
             for (var i = 0, len = body2.length; i < len; i++) {
                 // elements[i].style ...
                 body2[i].classList.remove('night');
@@ -379,12 +374,12 @@ const dnButtonF = () => {
             const dnButtonIMG = document.querySelector('#style-button-toggle__img');
             dnButtonIMG.src = './build/img/sun.png';
 
-            console.log('hola');
+         
             for (var i = 0, len = html2.length; i < len; i++) {
                 // elements[i].style ...
                 html2[i].classList.add('night');
             }
-            console.log(body2);
+     
             for (var i = 0, len = body2.length; i < len; i++) {
                 // elements[i].style ...
                 body2[i].classList.add('night');
@@ -414,13 +409,12 @@ const clearContent = (data) => {
 
 const searchBar = (contryList) => {
 
-    console.log(countryList);
+   
 
     const showNewCards = (group) => {
         clearContent();
         for (const country of group) {
-            console.log("hola!")
-            console.log(country);
+        
             init(group, 'search');
         }
         if ( group.length === 0) {
@@ -450,8 +444,7 @@ const searchBar = (contryList) => {
             showNewCards(countryList.countries.filter(country => {
                 
                 if (country.nameA.includes(value) === 'true') {
-                    console.log('true');
-                    console.log(country);
+      
                 }
                 return country.nameA.includes(value)
             }).sort((countryA, countryB) => {
@@ -459,13 +452,11 @@ const searchBar = (contryList) => {
             }));
         } else {
             clearContent();
+            backToStart(dataLALA);
         }
     });
 }
 
-searchInput.addEventListener('click', function(e){
-    console.log(e);
-});
 
 const countryList = {
     countries: []
@@ -500,7 +491,6 @@ const addCountryToList = (item) => {
     const { countries } = countryList;
     countryList.countries = [...countries, item];
     if (countryList.countries.length >= 250) {
-        console.log('done');
         searchBar(countryList.countries);
     }
 }
@@ -517,3 +507,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dnButtonF();
 
 });
+
+const backToStart = (data) => {
+    init(data, 'load');
+}
