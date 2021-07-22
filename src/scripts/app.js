@@ -25,10 +25,14 @@ const showCountry = (itemone, itemtwo) => {
 
     // LOGO CLICK BACK TO INDEX
     logo.addEventListener('click', function(e){
+        console.log('hola');
         clearContent();
         init(dataLALA, 'load');
+        console.log('hola');
+        main.classList.remove('hidden');
         try {
             if (overlay) {
+                console.log('hola');
                 overlay.remove();
             }
         body.classList.remove('fix-body');
@@ -127,7 +131,7 @@ const showCountry = (itemone, itemtwo) => {
 
         const { country } = borderCountriesList;
         borderCountriesList.country = [...country, `<span>${countrya}</span>`];
-        console.log(borderCountriesList.country);
+    
         
     });
 
@@ -140,7 +144,7 @@ const showCountry = (itemone, itemtwo) => {
         const countryLink = dataLALA.filter(country => {
             return country.alpha3Code.includes(code);
         });
-        console.log(countryLink);
+       
         clearContent();
         init(countryLink, 'load');
         overlay.remove();
@@ -191,7 +195,7 @@ const showCountry = (itemone, itemtwo) => {
 const selectCountry = (card, LALA) => {
     card.addEventListener('click', function(e) {
 
-        console.log( body.scrollTop)
+  
         const selectedCountry = card.children;
 
         const selectedCountry_image = selectedCountry[0].firstElementChild.src;
@@ -535,7 +539,7 @@ const backToStart = (data) => {
 
 const filterInput = () => {
     const filter = document.querySelector('#filter')
-    console.log(filter)
+
     filter.addEventListener("change", function(e){
         if(this.value === 'All') {
             clearContent();
@@ -551,7 +555,7 @@ const filterInput = () => {
             });
             searchInput.addEventListener('change', function(){
                 searchBar(dataEurope);
-                console.log('searching on europe');
+            
             })
       
             init(dataEurope, 'load');
