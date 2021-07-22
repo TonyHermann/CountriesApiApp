@@ -1,5 +1,3 @@
-
-
 const main = document.querySelector('main');
 const main2 = document.getElementsByTagName('main');
 const body = document.querySelector('.body');
@@ -10,14 +8,36 @@ const p = document.getElementsByTagName('p');
 const h1 = document.getElementsByTagName('h1');
 const span = document.getElementsByTagName('span');
 const dnButton = document.querySelector('.style-button-toggle');
+const logo = document.querySelector('#logo');
+let dataLALA 
+let dataXD
+const searchInput = document.querySelector('#search');
+const countryList = {
+    countries: []
+}
+// https://restcountries.eu/rest/v2/all
 
 
 const showCountry = (itemone, itemtwo) => {
 
-
-
     const overlay = document.createElement('div');
     overlay.classList.add('overlay');
+
+    // LOGO CLICK BACK TO INDEX
+    logo.addEventListener('click', function(e){
+        clearContent();
+        init(dataLALA, 'load');
+        try {
+            if (overlay) {
+                overlay.remove();
+            }
+        body.classList.remove('fix-body');
+        main.classList.remove('position-absolute');
+        } catch (error) {
+            console.log(error);
+        }
+    })
+
 
     const divButton = document.createElement('div');
     divButton.classList.add('back_button');
@@ -107,12 +127,29 @@ const showCountry = (itemone, itemtwo) => {
 
         const { country } = borderCountriesList;
         borderCountriesList.country = [...country, `<span>${countrya}</span>`];
+        console.log(borderCountriesList.country);
+        
     });
 
     const divBorderCountries = document.createElement('div');
     divBorderCountries.classList.add('overlay__content-border__countries');
     divBorderCountries.innerHTML = `${borderCountriesList.country}`;
  
+    divBorderCountries.addEventListener('click', function(e) {
+        let code = e.target.textContent;
+        const countryLink = dataLALA.filter(country => {
+            return country.alpha3Code.includes(code);
+        });
+        console.log(countryLink);
+        clearContent();
+        init(countryLink, 'load');
+        overlay.remove();
+        body.classList.remove('fix-body');
+        main.classList.remove('position-absolute');
+        main.classList.remove('hidden');
+        
+    })
+
 
     divBorder.appendChild(divBorderTitle);
     divBorder.appendChild(divBorderCountries);
@@ -131,21 +168,30 @@ const showCountry = (itemone, itemtwo) => {
     overlay.appendChild(divButton);
     overlay.appendChild(divCountryInfo)
 
+    
+    const first = body.firstElementChild.nextElementSibling;
+
+    body.insertBefore(overlay, first);
+    // body.classList.add('fix-body');
+   
+
+    window.scrollTo(0, 0)
+    const main = document.querySelector('.container')
+    main.classList.add('hidden');
+
     button.onclick = function() {
         overlay.remove();
         body.classList.remove('fix-body');
         main.classList.remove('position-absolute')
+        main.classList.remove('hidden');
     }
 
-    const first = body.firstElementChild.nextElementSibling;
-
-    body.insertBefore(overlay, first);
-    body.classList.add('fix-body');
 };
 
 const selectCountry = (card, LALA) => {
     card.addEventListener('click', function(e) {
 
+        console.log( body.scrollTop)
         const selectedCountry = card.children;
 
         const selectedCountry_image = selectedCountry[0].firstElementChild.src;
@@ -201,11 +247,6 @@ const init = (data, type) => {
         div.classList.add('card');
 
         div.setAttribute('data-id',  `${id}`);
-        if (country.name === country.nameB) {
-            div.setAttribute('data-name',  `${country.name}`);
-        } else {
-            div.setAttribute('data-name', `${country.nameB}`);
-        }
         
         id++;
 
@@ -313,8 +354,6 @@ const init = (data, type) => {
     
 }
 
-let dataLALA 
-
 const launchApp = () => {
     try {
         fetch('https://restcountries.eu/rest/v2/all')
@@ -335,9 +374,6 @@ const launchApp = () => {
     }
 }
 
-
-
-// https://restcountries.eu/rest/v2/all
 const dnButtonF = () => {
     dnButton.addEventListener('click', function(){
         if (html1.classList.contains('night')){
@@ -392,12 +428,6 @@ const dnButtonF = () => {
     });
 }
 
-
-let dataXD
-
-
-const searchInput = document.querySelector('#search');
-
 const clearContent = (data) => {
     
     const countriesContainer = document.querySelector('.countries-container');
@@ -407,6 +437,14 @@ const clearContent = (data) => {
     
 };
 
+const showError = (message, type) => {
+    const fatherDiv = document.querySelector('.countries-container');
+    const error = document.createElement('p');
+    error.classList.add(`${type}`);
+    error.textContent = `${message}`;
+    fatherDiv.appendChild(error);
+}
+
 const searchBar = (contryList) => {
 
    
@@ -414,7 +452,8 @@ const searchBar = (contryList) => {
     const showNewCards = (group) => {
         clearContent();
         for (const country of group) {
-        
+            const filter = document.querySelector('#filter');
+            filter.value = 'All';
             init(group, 'search');
         }
         if ( group.length === 0) {
@@ -423,7 +462,9 @@ const searchBar = (contryList) => {
     }
 
     const setNoResults = () => {
-
+        const filter = document.querySelector('#filter');
+            filter.value = 'All';
+        showError(`There's no country that matches with your search term, please, try again in English`, `error`);
     } 
 
     const getRelevancy = (value, searchTerm) => {
@@ -442,24 +483,17 @@ const searchBar = (contryList) => {
             value = value.trim().toLowerCase();
             // console.log(country);
             showNewCards(countryList.countries.filter(country => {
-                
-                if (country.nameA.includes(value) === 'true') {
-      
-                }
                 return country.nameA.includes(value)
             }).sort((countryA, countryB) => {
                 return getRelevancy(countryB.nameA, value) - getRelevancy(countryA.nameA, value);
             }));
         } else {
+            const filter = document.querySelector('#filter');
+            filter.value = 'All';
             clearContent();
             backToStart(dataLALA);
         }
     });
-}
-
-
-const countryList = {
-    countries: []
 }
 
 const getData = (data) => {
@@ -495,19 +529,80 @@ const addCountryToList = (item) => {
     }
 }
 
-// const fatherDiv = document.querySelector('.countries-container');
-// const div = document.createElement('div');
-// div.classList.add('card');
-// selectCountry(div, countryList.countries);
+const backToStart = (data) => {
+    init(data, 'load');
+}   
 
+const filterInput = () => {
+    const filter = document.querySelector('#filter')
+    console.log(filter)
+    filter.addEventListener("change", function(e){
+        if(this.value === 'All') {
+            clearContent();
+  
+            
+            init(dataLALA, 'load');
+        }
+        if(this.value === 'Europe') {
+            clearContent();
+            
+            const dataEurope = dataLALA.filter(country => {
+                return country.region.includes('Europe');
+            });
+            searchInput.addEventListener('change', function(){
+                searchBar(dataEurope);
+                console.log('searching on europe');
+            })
+      
+            init(dataEurope, 'load');
+        }
+        if(this.value === 'Africa') {
+            clearContent();
+     
+            const dataAfrica = dataLALA.filter(country => {
+                return country.region.includes('Africa');
+                
+            });
+    
+            init(dataAfrica, 'load');
+        }
+        if(this.value === 'Oceania') {
+            clearContent();
+           
+            const dataOceania = dataLALA.filter(country => {
+                return country.region.includes('Oceania');
+                
+            });
+       
+            init(dataOceania, 'load');
+        }
+        if(this.value === 'Asia') {
+            clearContent();
+          
+            const dataAsia = dataLALA.filter(country => {
+                return country.region.includes('Asia');
+                
+            });
+        
+            init(dataAsia, 'load');
+        }
+        if(this.value === 'America') {
+            clearContent();
+   
+            const dataAmerica = dataLALA.filter(country => {
+                return country.region.includes('America');
+                
+            });
+     
+            init(dataAmerica, 'load');
+        }
+    })
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     launchApp();
     
     dnButtonF();
 
+    filterInput();
 });
-
-const backToStart = (data) => {
-    init(data, 'load');
-}

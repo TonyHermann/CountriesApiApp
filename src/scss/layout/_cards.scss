@@ -1,13 +1,25 @@
 .countries-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 13rem;
     margin-top: 5rem;
     margin-bottom: 5rem;
-   
+   @include telefono {
+       flex-direction: column;
+   }
 }
 
 .card {
+    @include telefono {
+        align-items: center;
+        margin: 0 auto;
+        margin-bottom: 2rem;
+    }
+    @include tablet {
+        align-items: center;
+        margin: 3rem;
+    }
     display: grid;
     grid-template-rows: 1fr 1fr;
     width: 30rem;

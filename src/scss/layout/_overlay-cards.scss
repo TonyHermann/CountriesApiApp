@@ -1,74 +1,145 @@
-
 body {
     &.position-absolute {
         position: absolute;
     }
+
     z-index: 100000;
+
     .overlay {
         z-index: 100000;
-        position: fixed;
-        height: 100%;
+        // position: fixed;
+        height: 93vh;
         width: 100%;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
         background-color: $very_light_gray;
+
         .back_button {
             .button {
                 background-color: $white;
-                padding: 2rem;
+                padding: 1rem;
                 padding-left: 5rem;
                 padding-right: 5rem;
-                box-shadow: 0px 3px 13px -6px rgba(0,0,0,0.47);
-                border-radius: 1rem;
+                box-shadow: 0px 3px 13px -6px rgba(0, 0, 0, 0.47);
+                border-radius: 0.7rem;
                 cursor: pointer;
                 margin: 5rem;
             }
         }
+
         .countryinfo {
+            @include telefono {
+                display: flex;
+                flex-direction: column;
+                gap: 0rem;
+                margin: 0;
+                padding: 0;
+
+                .flag img {
+                    margin: 0;
+                    padding: 1rem;
+                    height: unset;
+                    width: unset;
+                }
+            }
+            @include tablet {
+                display: flex;
+                flex-direction: column;
+                margin: 0 auto;
+                padding: 0;
+                gap: 0;
+                .flag {
+                    width: 100%;
+                    align-items: center;
+                    img {
+                        margin: 0;
+                        padding: 1rem;
+                        height: unset;
+                        width: unset;
+                    }
+                }
+                
+            }
+
+            ;
             display: grid;
             grid-template-columns: 1fr 1fr;
             padding: 10rem;
             margin: 0 auto;
             gap: 5rem;
+
             .flag img {
                 margin: 0;
                 height: 30rem;
             }
+
             .content {
                 display: flex;
                 flex-direction: column;
+
+                @include telefono {
+                    padding: 1rem;
+                }
+
                 .overlay__content-title {
                     font-weight: $extra-bold;
                     font-size: 3rem;
                 }
+
                 .overlay__content-data {
+                    @include telefono {
+                        grid-template-columns: 1fr;
+                        grid-template-rows: auto;
+                    }
+
                     display: grid;
                     grid-template-columns: 1fr 1fr;
                     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+
                     p {
                         font-weight: $semi-bold;
                         margin: 1rem;
+
                         span {
                             font-weight: $light;
                         }
                     }
                 }
+
                 .overlay__content-border {
                     display: flex;
                     flex-direction: row;
                     align-items: center;
+
+                    @include telefono {
+                        flex-direction: column;
+                        align-items: unset;
+                    }
+
                     .overlay__content-border__title p {
                         font-weight: $semi-bold;
                     }
-                    .overlay__content-border__countries span {
-                        font-weight: $light;
-                        padding: 1rem;
-                        background-color: $white;
-                        margin: 1rem;
-                        border-radius: 0.9rem;
-                        cursor: pointer;
-                        box-shadow: 0px 3px 13px -6px rgba(0,0,0,0.47);
+
+                    .overlay__content-border__countries {
+                        text-align: center;
+
+                        span {
+                            font-weight: $light;
+                            padding: 1rem;
+                            background-color: $white;
+                            margin: 1rem;
+                            border-radius: 0.5rem;
+                            cursor: pointer;
+                            box-shadow: 0px 3px 13px -6px rgba(0, 0, 0, 0.47);
+
+                            @include telefono {
+                                display: grid;
+                                grid-template-columns: 1fr 1fr;
+                                width: 25%;
+
+                            }
+                        }
                     }
                 }
             }
@@ -98,5 +169,5 @@ body {
 //                     </p>
 //                 </div>
 //             </div>
-            
+
 //         </div>
