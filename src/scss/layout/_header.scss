@@ -19,7 +19,7 @@ header {
         z-index: 100;
         h1 {
             cursor: pointer;
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: black;
             @include telefono {
                 font-size: 2rem;
@@ -37,7 +37,7 @@ header {
             span {
                 margin: 0;
                 padding: 0;
-                font-weight: $extra-bold;
+                font-weight: $semi-bold;
             }
         }
     }
