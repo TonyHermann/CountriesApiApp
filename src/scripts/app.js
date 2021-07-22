@@ -58,6 +58,7 @@ const showCountry = (itemone, itemtwo) => {
     const img = document.createElement('img');
     img.src = itemtwo.flag;
     img.alt = itemtwo.countryName;
+    console.log('.');
 
     divFlag.appendChild(img);
 
