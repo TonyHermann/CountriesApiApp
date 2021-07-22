@@ -280,6 +280,7 @@ const init = (data, type) => {
         
         if (country.flagA) {
             img.src = country.flagA;
+            img.alt = country.nameB;
         title.textContent = country.nameB;
         // console.log(populationA);
             spanPopulation.textContent = country.populationA;
@@ -288,6 +289,7 @@ const init = (data, type) => {
         } else {
          
             img.src = flag;
+            img.alt = name;
             title.textContent = name;
             // console.log(populationA);
                 spanPopulation.textContent = population;
