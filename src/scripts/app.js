@@ -140,9 +140,21 @@ const showCountry = (itemone, itemtwo) => {
     const divBorderCountries = document.createElement('div');
     divBorderCountries.classList.add('overlay__content-border__countries');
    
-    borderCountriesList.country.forEach(function(country){
-        divBorderCountries.innerHTML += `${country}`;
-    });
+    if(borderCountriesList.country > 1) {
+        borderCountriesList.country.forEach(function(country){
+            divBorderCountries.innerHTML += `${country}`;
+        });
+    } else if (borderCountriesList.country > 0 && borderCountriesList.country <= 1) {
+        borderCountriesList.country.forEach(function(country){
+            divBorderCountries.innerHTML = `${country}`;
+        });
+    } else {
+       
+            divBorderCountries.innerHTML = `${borderCountriesList.country}`;
+     
+    }
+
+    
 
     // divBorderCountries.innerHTML = `${borderCountriesList.country}`;
  
