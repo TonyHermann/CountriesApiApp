@@ -2,11 +2,15 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 13rem;
+    gap: 10rem;
     margin-top: 5rem;
     margin-bottom: 5rem;
    @include telefono {
        flex-direction: column;
+       gap: 0rem;
+       padding: 0;
+       align-items: center;
+       align-content: center;
    }
 }
 

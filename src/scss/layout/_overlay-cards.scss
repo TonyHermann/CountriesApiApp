@@ -124,7 +124,17 @@ body {
                     .overlay__content-border__countries {
                         text-align: center;
 
+                        @include telefono {
+                            display: grid;
+                            grid-template-columns: 1fr 1fr 1fr;
+                            
+                            
+
+                        }
                         span {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
                             font-weight: $light;
                             padding: 1rem;
                             background-color: $white;
@@ -133,12 +143,7 @@ body {
                             cursor: pointer;
                             box-shadow: 0px 3px 13px -6px rgba(0, 0, 0, 0.47);
 
-                            @include telefono {
-                                display: grid;
-                                grid-template-columns: 1fr 1fr;
-                                width: 25%;
-
-                            }
+                            
                         }
                     }
                 }

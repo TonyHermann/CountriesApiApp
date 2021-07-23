@@ -139,7 +139,12 @@ const showCountry = (itemone, itemtwo) => {
 
     const divBorderCountries = document.createElement('div');
     divBorderCountries.classList.add('overlay__content-border__countries');
-    divBorderCountries.innerHTML = `${borderCountriesList.country}`;
+   
+    borderCountriesList.country.forEach(function(country){
+        divBorderCountries.innerHTML += `${country}`;
+    });
+
+    // divBorderCountries.innerHTML = `${borderCountriesList.country}`;
  
     divBorderCountries.addEventListener('click', function(e) {
         let code = e.target.textContent;
