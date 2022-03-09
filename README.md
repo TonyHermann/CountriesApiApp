@@ -58,6 +58,7 @@ responsive skills, i think.
 ### Continued development
 
 Ok, so, since i made it with JS Vanilla and i'm a newbie on this yet, i will re-develop this on the future, but with React.js; in order to optimize the code and improve the function that show you information from country that you have clicked. Also, i want to stop the over Scss nesting use.
+- [03-08-22] Replaced the API url to https://restcountries.com/v2/all, because the old one wasn't working anymore.
 
 ### Useful resources
 
