@@ -16,6 +16,7 @@ const countryList = {
     countries: []
 }
 // https://restcountries.eu/rest/v2/all
+// https://restcountries.com/v3.1/all
 
 
 const showCountry = (itemone, itemtwo) => {
@@ -381,7 +382,7 @@ const init = (data, type) => {
 
 const launchApp = () => {
     try {
-        fetch('https://restcountries.eu/rest/v2/all')
+        fetch('https://restcountries.com/v2/all')
         .then(function(res){
             console.log(res);
             return res.json();
@@ -390,6 +391,7 @@ const launchApp = () => {
             init(data, 'load');
             getData(data);
             dataLALA = data;
+            console.log(dataLALA);
         })
         .catch(function(err){
             console.log(err);
